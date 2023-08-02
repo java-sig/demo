@@ -16,6 +16,11 @@ dependencies {
     implementation project(path: ':common')
     implementation 'com.github.kristofa:brave-spring-web-servlet-interceptor:3.7.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+    testAnnotationProcessor('org.projectlombok:lombok')
+    testCompileOnly("org.projectlombok:lombok")
 }
 
 test {

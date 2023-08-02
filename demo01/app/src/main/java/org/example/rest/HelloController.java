@@ -1,10 +1,9 @@
 package org.example.rest;
 
+import org.example.dto.UserRes;
 import org.example.rest.annotation.LoginRequired;
 import org.example.utils.Utils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -16,9 +15,17 @@ public class HelloController {
         return "hello,world~" + i + "-" + b;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/{id}")
     @LoginRequired
-    public String user(){
+    public UserRes user(@PathVariable("id") int id){
+        UserRes res = new UserRes();
+        res.setId(id);
+        res.setName("admin");
+        return res;
+    }
+
+    @GetMapping("/map")
+    public String map(){
         return "用户中心，需要登录";
     }
 }
